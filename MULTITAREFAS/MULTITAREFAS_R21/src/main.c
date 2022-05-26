@@ -107,8 +107,8 @@ void tarefa_1(void)
 	{
 		a++;
 		port_pin_set_output_level(LED_0_PIN, LED_0_ACTIVE); /* Liga LED. */
-		TarefaContinua(2);
-	
+		//TarefaContinua(2);
+		TarefaEspera(100);	// Substituindo TarefaContinua(2);
 	}
 }
 
@@ -118,19 +118,26 @@ void tarefa_2(void)
 	for(;;)
 	{
 		b++;
-		TarefaSuspende(2);
+		//TarefaSuspende(2);
+		TarefaEspera(100); // Substituindo linhas comentadas
 		port_pin_set_output_level(LED_0_PIN, !LED_0_ACTIVE); 	/* Turn LED off. */
-		TarefaContinua(3);
+		//TarefaContinua(3);
 	}
 }
 
 void tarefa_3(void)
 {
 	volatile uint16_t c = 0;
+	volatile int i, j = 0;
 	for(;;)
 	{
 		c++;
-		TarefaSuspende(3);
+		for(i=0;i<100000;i++){
+			j = j + i;
+		}
+		//TarefaSuspende(3);
+		TarefaEspera(100);
+		
 	}
 }
 
